@@ -28,7 +28,7 @@ class MovingAverage(private val windowSize: Int) {
     }
 
     /**
-     * 直接「現在の平均だけ取得」したい場合
+     * 直接現在の平均だけ取得する場合
      */
     fun getCurrentAverage(): Pair<Double, Double>? {
         if (queue.isEmpty()) return null

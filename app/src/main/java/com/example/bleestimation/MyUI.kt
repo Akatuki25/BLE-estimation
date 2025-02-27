@@ -14,11 +14,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.unit.dp
 
-/**
- * Jetpack Composeで画面表示を行うファイル。
- * BLEScannerScreen はボタンやテキスト、そして位置可視化用のCanvasを含む。
- */
-
 @Composable
 fun BLEScannerScreen(
     bleScanManager: BleScanManager,
@@ -54,9 +49,6 @@ fun BLEScannerScreen(
                 .background(Color.LightGray),
             contentAlignment = Alignment.TopStart
         ) {
-            // 必要に応じてビーコン情報をここに書いてもOKだが、
-            // BleScanManager側の定義を参照しても良い
-            // （デモとして同じ定義をここで再掲）
             val beacons = listOf(
                 BeaconInfo("MyCustomBeacon1", 2.0, 13.5, -59, 2.0),
                 BeaconInfo("MyCustomBeacon2", 0.0, 10.0, -59, 2.0),

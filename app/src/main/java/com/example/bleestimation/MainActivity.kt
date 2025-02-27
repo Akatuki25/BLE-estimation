@@ -8,10 +8,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import android.util.Log
 
-/**
- * MainActivity はパーミッションの取得と画面セットのみを担当。
- * BLE周りの詳細は BleScanManager へ、UIは MyUI.kt の BLEScannerScreen へ任せる。
- */
 class MainActivity : ComponentActivity() {
 
     // --- 分割したクラスのインスタンスを生成 ---

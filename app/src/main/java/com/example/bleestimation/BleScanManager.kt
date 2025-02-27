@@ -23,7 +23,7 @@ import androidx.compose.runtime.setValue
 class BleScanManager(
     private val context: Context,
     private val largeWindowMA: MovingAverage,      // 窓幅60の移動平均
-    private val smallWindowMA: MovingAverage,      // 窓幅10の移動平均(カルマン用)
+    private val smallWindowMA: MovingAverage,      // 窓幅10の移動平均(カルマンフィルタ入力用)
     private val kalmanX: AdaptiveKalman,           // x軸用カルマン
     private val kalmanY: AdaptiveKalman,           // y軸用カルマン
     private val movementDetector: MovementDetector // 動いているか検出
@@ -52,7 +52,7 @@ class BleScanManager(
     // 前回位置(移動検出用)
     private var lastPosition: Pair<Double, Double>? = null
 
-    // 使用するビーコンの定義（座標やパスロスなど）
+    // 使用するビーコンの定義
     private val knownBeacons = listOf(
         BeaconInfo("MyCustomBeacon1", 2.0, 13.5, -59, 2.0),
         BeaconInfo("MyCustomBeacon2", 0.0, 10.0, -59, 2.0),
@@ -170,9 +170,7 @@ class BleScanManager(
 
         // 4. 移動検出
         val isMoving = movementDetector.isMoving(rawPos, lastPosition)
-        // ここではログ表示など(必要あれば)
         println("IsMoving: $isMoving, rawPos=$rawPos")
-
         // 前回位置更新
         lastPosition = rawPos
     }
